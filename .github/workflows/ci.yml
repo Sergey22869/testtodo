@@ -22,8 +22,7 @@ jobs:
 
 <<<<<<< HEAD
     docker:
-=======
-   docker:
+
 >>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
     needs: test
     runs-on: ubuntu-latest
