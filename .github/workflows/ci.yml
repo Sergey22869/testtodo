@@ -20,7 +20,7 @@ jobs:
       - name: Run tests
         run: pytest -v
 
-  docker:
+    docker:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -38,4 +38,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ghcr.io/${{ github.repository_owner && lower(github.repository_owner) }}/${{ lower(github.event.repository.name) }}:latest
+          tags: |
+            ghcr.io/${{ lower(github.repository) }}:latest
+            ghcr.io/${{ lower(github.repository) }}:${{ github.sha }}
