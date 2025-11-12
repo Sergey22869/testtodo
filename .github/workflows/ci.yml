@@ -20,7 +20,11 @@ jobs:
       - name: Run tests
         run: pytest -v
 
+<<<<<<< HEAD
     docker:
+=======
+   docker:
+>>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -46,4 +50,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+<<<<<<< HEAD
           tags: ${{ steps.repo.outputs.tag }}
+=======
+          tags: ${{ steps.repo.outputs.tag }}
+>>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
