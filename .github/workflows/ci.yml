@@ -46,8 +46,8 @@ docker:
         uses: docker/build-push-action@v6
         with:
           push: true
-<<<<<<< HEAD
+#<<<<<<< HEAD
           tags: ${{ steps.repo.outputs.tag }}
-=======
+#=======
           tags: ${{ steps.repo.outputs.tag }}
->>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
+#>>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
