@@ -20,7 +20,7 @@ jobs:
       - name: Run tests
         run: pytest -v
 
-docker:
+  docker:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -34,20 +34,8 @@ docker:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # 👇 Вычисляем lowercase-имя репозитория
-      - name: Get lowercase repo name
-        id: repo
-        run: |
-          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          REPO=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          echo "tag=ghcr.io/$OWNER/$REPO:latest" >> "$GITHUB_OUTPUT"
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
           push: true
-#<<<<<<< HEAD
-          tags: ${{ steps.repo.outputs.tag }}
-#=======
-          tags: ${{ steps.repo.outputs.tag }}
-#>>>>>>> 26a83632f84d87817a601e595c7dcb108fbe87a2
+          tags: ghcr.io/${{ github.repository }}:latest
